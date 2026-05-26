@@ -20,30 +20,21 @@ public class BfhlController {
         this.bfhlService = bfhlService;
     }
 
-    // POST API
     @PostMapping
-    public ResponseEntity<BfhlResponseDTO> processData(
-            @Valid @RequestBody BfhlRequestDTO request) {
-
+    public ResponseEntity<BfhlResponseDTO> processData(@Valid @RequestBody BfhlRequestDTO request) {
         BfhlResponseDTO response = bfhlService.processRequest(request);
         return ResponseEntity.ok(response);
     }
 
-    // GET API
     @GetMapping
     public ResponseEntity<Map<String, Object>> getOperationCode() {
-
-        return ResponseEntity.ok(
-                Map.of("operation_code", 1));
+        return ResponseEntity.ok(Map.of("operation_code", 1));
     }
 
-    // HEALTH API
     @GetMapping("/health")
-    public ResponseEntity<Map<String, String>> healthCheck() {
-
-        return ResponseEntity.ok(
-                Map.of(
-                        "status", "UP",
-                        "message", "API is running successfully"));
+    public ResponseEntity<Map<String, String>> health() {
+        return ResponseEntity.ok(Map.of(
+                "status", "UP",
+                "user_id", "karuna_jain_02082005"));
     }
 }
